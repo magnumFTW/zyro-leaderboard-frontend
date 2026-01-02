@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zyro's Leaderboard - Skinrave</title>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale-pulse-out">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#leaderboard">Leaderboard</a></li>
+        </ul>
+    </nav>
+
+    <!-- Social Icons -->
+    <div class="social-icons">
+        <a href="https://x.com/clashzyro" target="_blank" title="X" class="social-twitter">
+            <i class="fa-brands fa-x-twitter"></i>
+        </a>
+
+        <a href="https://kick.com/clashzyro" target="_blank" title="Kick" class="social-kick">
+            <i class="fa-solid fa-k"></i>
+        </a>
+        
+        <a href="https://discord.gg/ZEv8deeCqm" target="_blank" title="Discord" class="social-discord">
+            <i class="fa-brands fa-discord"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Welcome to Zyro's Leaderboard</h1>
+        <p class="subtitle">Sign up on Skinrave using my code below and climb the leaderboard for exclusive rewards.</p>
+        
+        <a href="https://skinrave.gg/en?r=CLASHZYRO" target="_blank" class="referral-code">
+            ZYRO
+        </a>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section id="leaderboard" class="leaderboard-section">
+        <!-- Timer Display -->
+        <div id="timer-container" style="text-align: center; margin-bottom: 3rem;">
+            <div id="timer-display" style="display: none;">
+                <h3 style="color: #22c55e; font-size: 2.5rem; margin-bottom: 1rem;">30-Day Competition Ending In:</h3>
+                <div id="countdown" style="font-family: 'Inter', monospace; font-size: 3.5rem; color: #fff; text-shadow: 0 0 20px rgba(34, 197, 94, 0.5);">
+                    <span id="days">00</span>d 
+                    <span id="hours">00</span>h 
+                    <span id="minutes">00</span>m 
+                    <span id="seconds">00</span>s
+                </div>
+            </div>
+            
+            <div id="timer-inactive" style="display: block;">
+                <p style="color: rgba(255,255,255,0.7); font-size: 1.8rem;">No active competition</p>
+            </div>
+            
+            <div id="timer-ended" style="display: none;">
+                <h3 style="color: #ffd700; font-size: 2.5rem; margin-bottom: 1rem;">🏆 Competition Ended!</h3>
+                <p style="color: rgba(255,255,255,0.7);">Final results are locked.</p>
+            </div>
+        </div>
+
+        <h2>Leaderboard Rankings</h2>
+        <div class="leaderboard-container">
+            <div class="leaderboard-header">
+                <div>Rank</div>
+                <div>Player</div>
+                <div>Wagered</div>
+            </div>
+            <div id="leaderboard-body">
+                <div class="loading">Loading leaderboard...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/leaderboard.js"></script>
+    <!-- Pace Loader -->
+    <script src="js/pace.min.js"></script>
+
+</body>
+</html>
