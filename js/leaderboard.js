@@ -17,7 +17,7 @@
 
 const CONFIG = {
     API_BASE_URL: 'https://zyro-leaderboard-backend.vercel.app/api',
-    REFRESH_INTERVAL: 30000 // Refresh every 30 seconds
+    REFRESH_INTERVAL: 180000 // Refresh every 30 seconds
 };
 
 // ===================================================================
