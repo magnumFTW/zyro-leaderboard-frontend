@@ -29,7 +29,8 @@ let competitionState = {
     isEnded: false,
     startTime: null,
     endTime: null,
-    remainingSeconds: 0
+    remainingSeconds: 0,
+    durationDays: 30  
 };
 
 let countdownInterval = null;
@@ -165,7 +166,8 @@ async function fetchCompetitionStatus() {
                 isEnded: result.competition.isEnded,
                 startTime: result.competition.startTime,
                 endTime: result.competition.endTime,
-                remainingSeconds: result.competition.remainingSeconds
+                remainingSeconds: result.competition.remainingSeconds,
+                durationDays: result.competition.durationDays || 30  // Add this line
             };
         }
         
@@ -291,6 +293,16 @@ function updateTimerDisplay() {
 }
 
 /**
+ * Update competition title with dynamic duration
+ */
+function updateCompetitionTitle() {
+    const titleElement = document.getElementById('competition-title');
+    if (titleElement && competitionState.durationDays) {
+        titleElement.textContent = `${competitionState.durationDays} Day Competition Ending In:`;
+    }
+}
+
+/**
  * Update countdown timer
  */
 function updateCountdown() {
@@ -348,6 +360,9 @@ async function updatePage() {
             fetchCompetitionStatus(),
             fetchLeaderboard()
         ]);
+
+        // Update competition title with dynamic duration
+        updateCompetitionTitle();
         
         // Update timer display
         updateTimerDisplay();
