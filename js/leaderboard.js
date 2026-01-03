@@ -253,12 +253,11 @@ function renderLeaderboard(players) {
             <div class="wagered">
                 $${wageredAmount}
                 <span style="display: block; font-size: 1.1rem; opacity: 0.7; margin-top: 0.3rem;">
-                    ${player.wagered > 0 ? `Earned: $${player.earned ? player.earned.toFixed(2) : '0.00'}` : 'Not wagered yet'}
+                    ${player.wagered > 0 ? `Earned: $${parseFloat(player.earned || 0).toFixed(2)}` : 'Not wagered yet'}
                 </span>
                 ${rewardHTML}
             </div>
         `;
-    
         leaderboardBody.appendChild(item); 
     });
 }
