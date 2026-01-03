@@ -246,7 +246,7 @@ function renderLeaderboard(players) {
                 ${medal} ${rankText}
             </div>
             <div class="user-info">
-                <img src="${player.user.avatarUrl}" alt="${displayName}" class="user-avatar" onerror="this.src='https://via.placeholder.com/50'">
+                <img src="${player.user.avatarUrl}" alt="${displayName}" class="user-avatar" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2250%22 height=%2250%22%3E%3Crect width=%2250%22 height=%2250%22 fill=%22%23333%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-size=%2224%22%3E?%3C/text%3E%3C/svg%3E'">
                 <div>
                     <div class="username">${displayName}</div>
                     <div class="user-tier" style="color: ${tierColor};">Lv.${player.user.level || 0} • ${tier}</div>
