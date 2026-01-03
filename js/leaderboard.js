@@ -295,10 +295,16 @@ function updateTimerDisplay() {
 /**
  * Update competition title with dynamic duration
  */
+/**
+ * Update competition title with dynamic duration
+ */
 function updateCompetitionTitle() {
     const titleElement = document.getElementById('competition-title');
     if (titleElement && competitionState.durationDays) {
         titleElement.textContent = `${competitionState.durationDays} Day Competition Ending In:`;
+    } else if (titleElement) {
+        // Fallback if durationDays not available
+        titleElement.textContent = 'Competition Ending In:';
     }
 }
 
