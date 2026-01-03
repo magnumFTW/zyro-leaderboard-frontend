@@ -81,31 +81,41 @@ function getMedalEmoji(rank) {
  * Get rank display text
  */
 function getRankText(rank) {
-    switch(rank) {
-        case 1: return '1st';
-        case 2: return '2nd';
-        case 3: return '3rd';
-        default: return `#${rank}`;
-    }
+    if (rank === 1) return '1st';
+    if (rank === 2) return '2nd';
+    if (rank === 3) return '3rd';
+    
+    // Add ordinal suffix for 4th, 5th, etc. (without # symbol)
+    const suffix = ['th', 'st', 'nd', 'rd'];
+    const v = rank % 100;
+    return rank + (suffix[(v - 20) % 10] || suffix[v] || suffix[0]);
 }
 
 /**
  * Get tier color based on tier name
  */
 function getTierColor(tier) {
+    if (!tier) return '#9ca3af'; // Default gray for missing tier
+    
     const tierColors = {
-        'bronze': '#cd7f32',
-        'silver': '#c0c0c0',
-        'gold': '#ffd700',
-        'platinum': '#e5e4e2',
-        'diamond': '#b9f2ff',
-        'master': '#9d4edd',
-        'grandmaster': '#ff006e',
-        'challenger': '#ff006e'
+        'IRON': '#9ca3af',
+        'BRONZE': '#cd7f32',
+        'SILVER': '#c0c0c0',
+        'GOLD': '#ffd700',
+        'MITHRIL': '#4a90e2',
+        'SAPPHIRE': '#0f52ba',
+        'EMERALD': '#50c878',
+        'RUBY': '#e0115f',
+        'DIAMOND': '#b9f2ff',
+        'PLATINUM': '#e5e4e2',
+        'MASTER': '#9d4edd',
+        'GRANDMASTER': '#ff006e',
+        'CHALLENGER': '#ff006e'
     };
     
-    const tierLower = tier.toLowerCase();
-    return tierColors[tierLower] || '#22c55e';
+    // Convert to uppercase to match API format
+    const tierUpper = tier.toUpperCase();
+    return tierColors[tierUpper] || '#22c55e'; // Default green if tier not found
 }
 
 // ===================================================================
@@ -213,22 +223,43 @@ function renderLeaderboard(players) {
         item.className = 'leaderboard-item';
         item.style.animationDelay = `${index * 0.05}s`;
         
+        // Reward amounts for top 5
+        const rewards = {
+            1: 75,
+            2: 50,
+            3: 25,
+            4: 15,
+            5: 10
+        };
+
+        const reward = rewards[rank];
+        const rewardHTML = reward ? `
+            <span class="reward-badge">
+                💎 Reward: ${reward} gems
+            </span>
+        ` : '';
+
         item.innerHTML = `
             <div class="rank-badge ${isTopThree ? 'top-3' : ''} ${rank === 1 ? 'first' : ''} ${rank === 2 ? 'second' : ''} ${rank === 3 ? 'third' : ''}">
-                ${rankText}
+                ${medal} ${rankText}
             </div>
             <div class="user-info">
-                ${medal ? `<span style="font-size: 3rem; margin-right: 0.5rem; line-height: 1;">${medal}</span>` : ''}
                 <img src="${player.user.avatarUrl}" alt="${displayName}" class="user-avatar" onerror="this.src='https://via.placeholder.com/50'">
                 <div>
                     <div class="username">${displayName}</div>
-                    <div class="user-tier" style="color: ${tierColor};">${tier}</div>
+                    <div class="user-tier" style="color: ${tierColor};">Lv.${player.user.level || 0} • ${tier}</div>
                 </div>
             </div>
-            <div class="wagered">$${wageredAmount}</div>
+            <div class="wagered">
+                $${wageredAmount}
+                <span style="display: block; font-size: 1.1rem; opacity: 0.7; margin-top: 0.3rem;">
+                    ${player.wagered > 0 ? `Earned: $${player.earned ? player.earned.toFixed(2) : '0.00'}` : 'Not wagered yet'}
+                </span>
+                ${rewardHTML}
+            </div>
         `;
-        
-        leaderboardBody.appendChild(item);
+    
+        leaderboardBody.appendChild(item); 
     });
 }
 

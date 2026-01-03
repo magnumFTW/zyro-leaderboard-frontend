@@ -782,6 +782,56 @@ nav a:hover::after {
 }
 
 /* ===================================================================
+ * # REWARD BADGE
+ * ================================================================ */
+.reward-badge {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
+  animation: gemGlow 2s ease-in-out infinite;
+}
+
+@keyframes gemGlow {
+  0%, 100% {
+    box-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 2px 20px rgba(255, 215, 0, 0.8);
+  }
+}
+
+.leaderboard-item:nth-child(1) .reward-badge {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  animation: gemGlow 1.5s ease-in-out infinite;
+}
+
+.leaderboard-item:nth-child(2) .reward-badge {
+  background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 100%);
+}
+
+.leaderboard-item:nth-child(3) .reward-badge {
+  background: linear-gradient(135deg, #cd7f32 0%, #e8a562 100%);
+}
+
+.leaderboard-item:nth-child(4) .reward-badge,
+.leaderboard-item:nth-child(5) .reward-badge {
+  background: linear-gradient(135deg, #22c55e 0%, #4ade80 100%);
+}
+
+@media only screen and (max-width: 600px) {
+  .reward-badge {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+/* ===================================================================
  * # animations
  * ================================================================ */
 @keyframes fadeInUp {
