@@ -17,7 +17,7 @@
 
 const CONFIG = {
     API_BASE_URL: 'https://zyro-leaderboard-backend.vercel.app/api',
-    REFRESH_INTERVAL: 180000 // Refresh every 30 seconds
+    REFRESH_INTERVAL: 180000 // Refresh every 3 seconds
 };
 
 // ===================================================================
@@ -30,7 +30,7 @@ let competitionState = {
     startTime: null,
     endTime: null,
     remainingSeconds: 0,
-    durationDays: 30  
+    durationDays: 14  
 };
 
 let countdownInterval = null;
