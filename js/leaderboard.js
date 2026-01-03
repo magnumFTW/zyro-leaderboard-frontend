@@ -212,7 +212,7 @@ function renderLeaderboard(players) {
         const displayName = censorUsername(player.user.username);
         
         // Get tier info
-        const tier = player.user.tier || 'Bronze';
+        const tier = player.user.levelTier || 'BRONZE';
         const tierColor = getTierColor(tier);
         
         // Format wagered amount
